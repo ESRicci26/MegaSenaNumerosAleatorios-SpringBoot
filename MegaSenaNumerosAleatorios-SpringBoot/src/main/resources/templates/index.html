@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loteria-MegaSena</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center">Gerador de Números Mega-Sena</h1>
+                <form th:action="@{/generate}" method="post">
+                    <div class="mb-3">
+                        <label for="numberOfDigits" class="form-label">Selecione a quantidade de dezenas:</label>
+                        <select name="numberOfDigits" id="numberOfDigits" class="form-select">
+                            <option th:each="option : ${options}" th:value="${option}" th:text="${option}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="randomNumbers" class="form-label">Números gerados:</label>
+                        <textarea id="randomNumbers" class="form-control" rows="5" readonly
+                                  th:text="${randomNumbers}"></textarea>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Gerar Números</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
